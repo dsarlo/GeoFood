@@ -53,6 +53,7 @@
     <Compile Include="FoodGui.Designer.cs">
       <DependentUpon>FoodGui.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Restaurant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FoodGui.resx">

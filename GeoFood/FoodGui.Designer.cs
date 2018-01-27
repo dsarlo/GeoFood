@@ -46,8 +46,8 @@
             // 
             // _submitButton
             // 
-            this._submitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._submitButton.Location = new System.Drawing.Point(116, 142);
+            this._submitButton.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._submitButton.Location = new System.Drawing.Point(117, 142);
             this._submitButton.Name = "_submitButton";
             this._submitButton.Size = new System.Drawing.Size(154, 51);
             this._submitButton.TabIndex = 1;
@@ -57,17 +57,17 @@
             // _prefLabel
             // 
             this._prefLabel.AutoSize = true;
-            this._prefLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._prefLabel.Location = new System.Drawing.Point(88, 15);
+            this._prefLabel.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._prefLabel.Location = new System.Drawing.Point(100, 15);
             this._prefLabel.Name = "_prefLabel";
-            this._prefLabel.Size = new System.Drawing.Size(212, 20);
+            this._prefLabel.Size = new System.Drawing.Size(189, 19);
             this._prefLabel.TabIndex = 1;
             this._prefLabel.Text = "General Food Preference";
             // 
             // _foodPrefDrop
             // 
             this._foodPrefDrop.FormattingEnabled = true;
-            this._foodPrefDrop.Location = new System.Drawing.Point(131, 38);
+            this._foodPrefDrop.Location = new System.Drawing.Point(134, 38);
             this._foodPrefDrop.Name = "_foodPrefDrop";
             this._foodPrefDrop.Size = new System.Drawing.Size(121, 21);
             this._foodPrefDrop.TabIndex = 2;
@@ -75,16 +75,16 @@
             // _zipLabel
             // 
             this._zipLabel.AutoSize = true;
-            this._zipLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._zipLabel.Location = new System.Drawing.Point(154, 75);
+            this._zipLabel.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._zipLabel.Location = new System.Drawing.Point(156, 75);
             this._zipLabel.Name = "_zipLabel";
-            this._zipLabel.Size = new System.Drawing.Size(81, 20);
+            this._zipLabel.Size = new System.Drawing.Size(77, 19);
             this._zipLabel.TabIndex = 4;
             this._zipLabel.Text = "Zip Code";
             // 
             // _zipTxtbox
             // 
-            this._zipTxtbox.Location = new System.Drawing.Point(143, 98);
+            this._zipTxtbox.Location = new System.Drawing.Point(144, 98);
             this._zipTxtbox.Name = "_zipTxtbox";
             this._zipTxtbox.Size = new System.Drawing.Size(100, 20);
             this._zipTxtbox.TabIndex = 5;
@@ -119,7 +119,7 @@
             // _restPic
             // 
             this._restPic.BackgroundImage = global::GeoFood.Properties.Resources.restaurant_e1456862749354;
-            this._restPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._restPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this._restPic.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this._restPic.InitialImage = null;
             this._restPic.Location = new System.Drawing.Point(248, 3);
@@ -151,10 +151,10 @@
             // _restName
             // 
             this._restName.AutoSize = true;
-            this._restName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._restName.Location = new System.Drawing.Point(16, 18);
+            this._restName.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._restName.Location = new System.Drawing.Point(17, 19);
             this._restName.Name = "_restName";
-            this._restName.Size = new System.Drawing.Size(162, 20);
+            this._restName.Size = new System.Drawing.Size(171, 19);
             this._restName.TabIndex = 5;
             this._restName.Text = "Bippity Boop\'s Cucina";
             // 

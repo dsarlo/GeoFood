@@ -7,6 +7,8 @@ namespace GeoFood
         public FoodGui()
         {
             InitializeComponent();//TODO Design GUI!
+
+            _restPic.BackgroundImageLayout = ImageLayout.Stretch;
         }
     }
 }

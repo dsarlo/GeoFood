@@ -1,2 +1,9 @@
 # Add any directories, files, or patterns you don't want to be tracked by version control
 .vs/GeoFood/v15/.suo
+.vs/GeoFood/v15/sqlite3/storage.ide
+.vs/GeoFood/v15/sqlite3/storage.ide
+GeoFood/bin/Debug/GeoFood.exe
+GeoFood/bin/Debug/GeoFood.pdb
+*.pdb
+GeoFood/obj/Debug/GeoFood.exe
+GeoFood/obj/Debug/GeoFood.pdb
