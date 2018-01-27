@@ -8,3 +8,12 @@ C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Debug\GeoFood.csproj.
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Debug\GeoFood.csproj.CoreCompileInputs.cache
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Debug\GeoFood.exe
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Debug\GeoFood.pdb
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\bin\Debug\GeoFood.exe.config
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.exe
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.pdb
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\bin\Debug\GeoFood.exe
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\bin\Debug\GeoFood.pdb
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.csprojResolveAssemblyReference.cache
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.FoodGui.resources
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.Properties.Resources.resources
+C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.csproj.GenerateResource.Cache
