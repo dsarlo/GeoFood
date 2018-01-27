@@ -8,11 +8,12 @@ namespace GeoFood
     {
         private double _latitude, _longitude;
         private GeoCoordinateWatcher _geoWatcher;
+        private readonly YelpApi _yelp;
 
         public FoodContext()
         {
+            _yelp = new YelpApi();
             GetCurrentLocation();
-            //GatherListOfRestaurants();
         }
 
         private void GetCurrentLocation()
@@ -30,10 +31,14 @@ namespace GeoFood
             _geoWatcher.Stop();
         }
 
-        public Restaurant GetRandomRestaurant(string preference)
+        public Restaurant GetRandomRestaurant()
         {
-            //use yelp api to create a randomized restaurant object based on the given preference here^
-            return null;
+            return _yelp.RandomRestaurant();
+        }
+
+        public void GatherListOfRestaurants(string preference)
+        {
+            _yelp.GenerateRestaurantList(_latitude, _longitude, preference);
         }
     }
 }

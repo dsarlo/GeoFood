@@ -68,18 +68,21 @@
             this._foodPrefDrop.Font = new System.Drawing.Font("HelvLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._foodPrefDrop.FormattingEnabled = true;
             this._foodPrefDrop.Items.AddRange(new object[] {
+            "Fast Food",
             "American",
-            "Asian",
+            "Japanese",
+            "Chinese",
+            "Thai",
             "German",
             "Italian",
             "Mediterranean",
             "Polish",
-            "Seafood",
-            ""});
+            "Seafood"});
             this._foodPrefDrop.Location = new System.Drawing.Point(134, 38);
             this._foodPrefDrop.Name = "_foodPrefDrop";
             this._foodPrefDrop.Size = new System.Drawing.Size(121, 24);
             this._foodPrefDrop.TabIndex = 2;
+            this._foodPrefDrop.SelectedIndexChanged += new System.EventHandler(this._foodPrefDrop_SelectedIndexChanged);
             // 
             // _bgPanel
             // 

@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace GeoFood.Model
+﻿namespace GeoFood.Model
 {
     internal class Restaurant
     {
