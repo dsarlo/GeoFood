@@ -7,3 +7,4 @@ GeoFood/bin/Debug/GeoFood.pdb
 *.pdb
 GeoFood/obj/Debug/GeoFood.exe
 GeoFood/obj/Debug/GeoFood.pdb
+*.ide
