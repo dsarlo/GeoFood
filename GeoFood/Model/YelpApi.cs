@@ -7,8 +7,6 @@ namespace GeoFood.Model
 {
     internal class YelpApi
     {
-        // Instantiating the Yelp Client, Client ID and Client Secret (from the API/yelp-based application registration page) passed in respectively
-
         private IList<BusinessResponse> _restaurantList = new List<BusinessResponse>();
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace GeoFood.Model
             if (_restaurantList.Count == 0)
             {
                 System.Windows.Forms.MessageBox.Show(@"You've gone through all of the restaurants!");
-                return new Restaurant("https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1480481055", "", 0f, "");
+                return new Restaurant("https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1480481055", "", -1f, "");
             }
 
             Random random = new Random();
@@ -50,7 +48,8 @@ namespace GeoFood.Model
             string photo = _restaurantList[index].ImageUrl;
             string name = _restaurantList[index].Name;
             float rating = _restaurantList[index].Rating;
-            string price = _restaurantList[index].Price;
+            string restaurantPrice = _restaurantList[index].Price;
+            string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;
 
             Restaurant restaurant = new Restaurant(photo, name, rating, price);
             _restaurantList.RemoveAt(index);
