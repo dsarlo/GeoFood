@@ -3,7 +3,7 @@ using GeoFood.Model;
 
 namespace GeoFood
 {
-    public partial class FoodGui : Form //★★★★☆
+    public partial class FoodGui : Form
     {
         private readonly FoodContext _foodContext;
 
@@ -15,6 +15,9 @@ namespace GeoFood
 
             _restPic.SizeMode = PictureBoxSizeMode.StretchImage;
             _foodPrefDrop.DropDownStyle = ComboBoxStyle.DropDownList;
+            _restRatePbox.BackgroundImageLayout = ImageLayout.Stretch;
+            _restRatePbox.BorderStyle = BorderStyle.None;
+            _restRatePbox.BackgroundImage = Properties.Resources.FFFFFF_0;
         }
 
         private void _submitButton_Click(object sender, System.EventArgs e)
@@ -23,7 +26,7 @@ namespace GeoFood
             _restPic.Load(randomRestaurant.Picture);
             _restName.Text = randomRestaurant.Name;
             _restPrice.Text = randomRestaurant.Price;
-            _restRate.Text = randomRestaurant.Rating.ToString();
+            _restRatePbox.BackgroundImage = randomRestaurant.Rating;
         }
 
         private void _foodPrefDrop_SelectedIndexChanged(object sender, System.EventArgs e)

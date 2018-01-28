@@ -35,11 +35,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this._restPic = new System.Windows.Forms.PictureBox();
             this._restPrice = new System.Windows.Forms.Label();
-            this._restRate = new System.Windows.Forms.Label();
             this._restName = new System.Windows.Forms.Label();
+            this._restRatePbox = new System.Windows.Forms.PictureBox();
             this._bgPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._restPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).BeginInit();
             this.SuspendLayout();
             // 
             // _submitButton
@@ -103,9 +104,9 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this._restRatePbox);
             this.panel2.Controls.Add(this._restPic);
             this.panel2.Controls.Add(this._restPrice);
-            this.panel2.Controls.Add(this._restRate);
             this.panel2.Controls.Add(this._restName);
             this.panel2.Location = new System.Drawing.Point(18, 154);
             this.panel2.Name = "panel2";
@@ -132,15 +133,6 @@
             this._restPrice.Size = new System.Drawing.Size(0, 20);
             this._restPrice.TabIndex = 7;
             // 
-            // _restRate
-            // 
-            this._restRate.AutoSize = true;
-            this._restRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._restRate.Location = new System.Drawing.Point(16, 38);
-            this._restRate.Name = "_restRate";
-            this._restRate.Size = new System.Drawing.Size(0, 25);
-            this._restRate.TabIndex = 6;
-            // 
             // _restName
             // 
             this._restName.AutoSize = true;
@@ -149,6 +141,15 @@
             this._restName.Name = "_restName";
             this._restName.Size = new System.Drawing.Size(0, 19);
             this._restName.TabIndex = 5;
+            // 
+            // _restRatePbox
+            // 
+            this._restRatePbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._restRatePbox.Location = new System.Drawing.Point(21, 43);
+            this._restRatePbox.Name = "_restRatePbox";
+            this._restRatePbox.Size = new System.Drawing.Size(92, 17);
+            this._restRatePbox.TabIndex = 9;
+            this._restRatePbox.TabStop = false;
             // 
             // FoodGui
             // 
@@ -163,6 +164,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._restPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -175,9 +177,9 @@
         private System.Windows.Forms.Panel _bgPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label _restName;
-        private System.Windows.Forms.Label _restRate;
         private System.Windows.Forms.Label _restPrice;
         private System.Windows.Forms.PictureBox _restPic;
+        private System.Windows.Forms.PictureBox _restRatePbox;
     }
 }
 
