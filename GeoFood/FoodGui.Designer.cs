@@ -33,14 +33,14 @@
             this._foodPrefDrop = new System.Windows.Forms.ComboBox();
             this._bgPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this._restRatePbox = new System.Windows.Forms.PictureBox();
             this._restPic = new System.Windows.Forms.PictureBox();
             this._restPrice = new System.Windows.Forms.Label();
             this._restName = new System.Windows.Forms.Label();
-            this._restRatePbox = new System.Windows.Forms.PictureBox();
             this._bgPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._restPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._restPic)).BeginInit();
             this.SuspendLayout();
             // 
             // _submitButton
@@ -68,17 +68,6 @@
             // 
             this._foodPrefDrop.Font = new System.Drawing.Font("HelvLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._foodPrefDrop.FormattingEnabled = true;
-            this._foodPrefDrop.Items.AddRange(new object[] {
-            "Fast Food",
-            "American",
-            "Japanese",
-            "Chinese",
-            "Thai",
-            "German",
-            "Italian",
-            "Mediterranean",
-            "Polish",
-            "Seafood"});
             this._foodPrefDrop.Location = new System.Drawing.Point(134, 38);
             this._foodPrefDrop.Name = "_foodPrefDrop";
             this._foodPrefDrop.Size = new System.Drawing.Size(121, 24);
@@ -113,6 +102,15 @@
             this.panel2.Size = new System.Drawing.Size(353, 100);
             this.panel2.TabIndex = 6;
             // 
+            // _restRatePbox
+            // 
+            this._restRatePbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._restRatePbox.Location = new System.Drawing.Point(21, 43);
+            this._restRatePbox.Name = "_restRatePbox";
+            this._restRatePbox.Size = new System.Drawing.Size(92, 17);
+            this._restRatePbox.TabIndex = 9;
+            this._restRatePbox.TabStop = false;
+            // 
             // _restPic
             // 
             this._restPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -142,15 +140,6 @@
             this._restName.Size = new System.Drawing.Size(0, 19);
             this._restName.TabIndex = 5;
             // 
-            // _restRatePbox
-            // 
-            this._restRatePbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this._restRatePbox.Location = new System.Drawing.Point(21, 43);
-            this._restRatePbox.Name = "_restRatePbox";
-            this._restRatePbox.Size = new System.Drawing.Size(92, 17);
-            this._restRatePbox.TabIndex = 9;
-            this._restRatePbox.TabStop = false;
-            // 
             // FoodGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -163,8 +152,8 @@
             this._bgPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this._restPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._restPic)).EndInit();
             this.ResumeLayout(false);
 
         }
