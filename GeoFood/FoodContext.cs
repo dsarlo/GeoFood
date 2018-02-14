@@ -1,6 +1,9 @@
-﻿
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Device.Location;
 using GeoFood.Model;
+using Newtonsoft.Json;
+using Yelp.Api.Models;
 
 namespace GeoFood
 {
@@ -9,6 +12,12 @@ namespace GeoFood
         private double _latitude, _longitude;
         private GeoCoordinateWatcher _geoWatcher;
         private readonly YelpApi _yelp;
+
+        private bool _preloadFinished;
+        public const string PropertyNamePreloadFinished = "PreloadFinished";
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public static object[] FoodPreferences = { "Fast Food", "Bar", "American", "Japanese", "Chinese", "Thai", "German", "Italian", "Mediterranean", "Polish", "Seafood", "Mexican" };
 
         public FoodContext()
         {
@@ -29,16 +38,63 @@ namespace GeoFood
             _latitude = currentLocation.Latitude;
             _longitude = currentLocation.Longitude;
             _geoWatcher.Stop();
+
+            ShouldWePreload();//TODO Rename?
+
+            //Unhook the positionchanged event so preload is only called once
+            _geoWatcher.PositionChanged -= PositionChanged;
+            _geoWatcher.Dispose();
         }
 
+        private void ShouldWePreload()
+        {
+            string currentLocationAsString = _latitude + ";" + _longitude;//TODO Encapsulate?
+
+            if (string.IsNullOrEmpty(Properties.Settings.Default.PreloadedBusinesses) || currentLocationAsString !=
+                Properties.Settings.Default.LastSavedLocation)
+            {
+                PreloadRestaurantSearches();
+                Properties.Settings.Default.LastSavedLocation = _latitude + ";" + _longitude;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                PreloadFinished = true;
+                Dictionary<int, IList<BusinessResponse>> preloadedDictionary = JsonConvert.DeserializeObject<Dictionary<int, IList<BusinessResponse>>>(Properties.Settings.Default.PreloadedBusinesses);
+                _yelp.PreloadedRestaurantSearches = preloadedDictionary;
+            }
+        }
+
+        //#GOODTOKNOW can only be called if a preference has been chosen otherwise current restaurant will be null
         public Restaurant GetRandomRestaurant()
         {
             return _yelp.RandomRestaurant();
         }
 
-        public void GatherListOfRestaurants(string preference)
+        public async void PreloadRestaurantSearches()
         {
-            _yelp.GenerateRestaurantList(_latitude, _longitude, preference);
+            PreloadFinished = await _yelp.PreloadRestaurantSearches(_latitude, _longitude, FoodPreferences);
+        }
+
+        public void ChangeUserPreference(int preference)
+        {
+            _yelp.ChangePreferredRestaurantType(preference);
+        }
+
+        internal bool PreloadFinished
+        {
+            get => _preloadFinished;
+            private set
+            {
+                _preloadFinished = value;
+                OnPropertyChanged(PropertyNamePreloadFinished);
+            }
+        }
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            handler?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
