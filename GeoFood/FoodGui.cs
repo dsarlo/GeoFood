@@ -23,7 +23,7 @@ namespace GeoFood
             _restRatePbox.BackgroundImage = Properties.Resources.FFFFFF_0;
 
             HookEvents();
-            HideForm();
+            //HideForm();
 
             #if DEBUG
             
@@ -36,7 +36,10 @@ namespace GeoFood
 
         private void OnPreloadFinished(object sender, PropertyChangedEventArgs e)
         {
-            ShowForm();
+            if (e.PropertyName == FoodContext.PropertyNamePreloadFinished)
+            {
+                ShowForm();
+            }
         }
 
         private void _submitButton_Click(object sender, System.EventArgs e)
@@ -47,7 +50,7 @@ namespace GeoFood
                 _restPic.Load(randomRestaurant.Picture);
                 _restName.Text = randomRestaurant.Name;
                 _restPrice.Text = randomRestaurant.Price;
-                _restRatePbox.BackgroundImage = _foodContext.RatingLookup(randomRestaurant.Rating);
+                _restRatePbox.BackgroundImage = randomRestaurant.Rating;
             }
         }
 

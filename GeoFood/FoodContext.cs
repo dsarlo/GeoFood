@@ -40,7 +40,7 @@ namespace GeoFood
             _longitude = currentLocation.Longitude;
             _geoWatcher.Stop();
 
-            ShouldWePreload();
+            //ShouldWePreload();
 
             //Unhook the positionchanged event so preload is only called once
             _geoWatcher.PositionChanged -= PositionChanged;
@@ -95,50 +95,6 @@ namespace GeoFood
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             handler?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-        public Bitmap RatingLookup(float rating)
-        {
-            Bitmap ratingAsImage = null;
-
-            switch (rating)
-            {
-                case -1:
-                    ratingAsImage = Properties.Resources.FFFFFF_0;
-                    break;
-                case 0:
-                    ratingAsImage = Properties.Resources._0;
-                    break;
-                case 1:
-                    ratingAsImage = Properties.Resources._1;
-                    break;
-                case 1.5f:
-                    ratingAsImage = Properties.Resources._1_5;
-                    break;
-                case 2:
-                    ratingAsImage = Properties.Resources._2;
-                    break;
-                case 2.5f:
-                    ratingAsImage = Properties.Resources._2_5;
-                    break;
-                case 3:
-                    ratingAsImage = Properties.Resources._3;
-                    break;
-                case 3.5f:
-                    ratingAsImage = Properties.Resources._3_5;
-                    break;
-                case 4:
-                    ratingAsImage = Properties.Resources._4;
-                    break;
-                case 4.5f:
-                    ratingAsImage = Properties.Resources._4_5;
-                    break;
-                case 5:
-                    ratingAsImage = Properties.Resources._5;
-                    break;
-            }
-
-            return ratingAsImage ?? Properties.Resources._0;
         }
     }
 }
