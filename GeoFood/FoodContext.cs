@@ -78,7 +78,8 @@ namespace GeoFood
 
         public void ChangeUserPreference(int preference)
         {
-            _yelp.ChangePreferredRestaurantType(preference);
+            string currentPref = FoodPreferences[preference].ToString();
+            _yelp.ChangePreferredRestaurantType(_latitude, _longitude, currentPref);
         }
 
         internal bool PreloadFinished

@@ -60,6 +60,19 @@ namespace GeoFood
             _foodContext.ChangeUserPreference(_foodPrefDrop.SelectedIndex);
         }
 
+        private void _prefNext_Click(object sender, System.EventArgs e)
+        {
+            if (_foodPrefDrop.SelectedIndex > -1)
+            {
+                Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();//TODO ENCAPSULATE THIS^
+                _restPic.Load(randomRestaurant.Picture);
+                _restName.Text = randomRestaurant.Name;
+                _restPrice.Text = randomRestaurant.Price;
+                _restRatePbox.BackgroundImage = randomRestaurant.Rating;
+                _prefPanel.Visible = false;
+            }
+        }
+
         #endregion
 
         #region HelperFunctions
@@ -82,10 +95,5 @@ namespace GeoFood
         }
 
         #endregion
-
-        private void _prefNext_Click(object sender, System.EventArgs e)
-        {
-            _prefPanel.Visible = false;
-        }
     }
 }
