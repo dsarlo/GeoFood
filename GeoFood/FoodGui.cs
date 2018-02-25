@@ -25,7 +25,6 @@ namespace GeoFood
             _restRatePbox.BackgroundImage = Properties.Resources.FFFFFF_0;
 
             HookEvents();
-            //HideForm();
 
             #if DEBUG
             
@@ -37,23 +36,21 @@ namespace GeoFood
         #region Events
 
         // TODO add progress bar that hides after this returns true
-        private void OnPreloadFinished(object sender, PropertyChangedEventArgs e)
+        private void FoodContextOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == FoodContext.PropertyNamePreloadFinished)
+            if (e.PropertyName == FoodContext.PropertyNameLoadFinished)
             {
-                ShowForm();
+                _loadPanel.Visible = false;
+                _genPanel.Visible = true;
+                DisplayNextRestaurant();
             }
         }
 
-        private void _submitButton_Click(object sender, System.EventArgs e)
+        private void _generateButton_Click(object sender, System.EventArgs e)
         {
             if (_foodPrefDrop.SelectedIndex > -1)
             {
-                Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();
-                _restPic.Load(randomRestaurant.Picture);
-                _restName.Text = randomRestaurant.Name;
-                _restPrice.Text = randomRestaurant.Price;
-                _restRatePbox.BackgroundImage = randomRestaurant.Rating;
+                DisplayNextRestaurant();
             }
         }
 
@@ -65,21 +62,9 @@ namespace GeoFood
 
         private void _foodPrefDrop_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            _foodContext.ChangeUserPreference(_foodPrefDrop.SelectedIndex);
-        }
-
-        private void _prefNext_Click(object sender, System.EventArgs e)
-        {
-            if (_foodPrefDrop.SelectedIndex > -1)
-            {
-                Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();//TODO ENCAPSULATE THIS^
-                _restPic.Load(randomRestaurant.Picture);
-                _restName.Text = randomRestaurant.Name;
-                _restPrice.Text = randomRestaurant.Price;
-                _restRatePbox.BackgroundImage = randomRestaurant.Rating;
-                _prefPanel.Visible = false;
-                _genPanel.Visible = true;
-            }
+            _prefPanel.Visible = false;
+            _loadPanel.Visible = true;
+            _foodContext.OnUserPreferenceChanged(_foodPrefDrop.SelectedIndex);
         }
 
         #endregion
@@ -88,19 +73,16 @@ namespace GeoFood
 
         private void HookEvents()
         {
-            _foodContext.PropertyChanged += OnPreloadFinished;
+            _foodContext.PropertyChanged += FoodContextOnPropertyChanged;
         }
 
-        private void HideForm()
+        private void DisplayNextRestaurant()
         {
-            WindowState = FormWindowState.Minimized;
-            ShowInTaskbar = false;
-        }
-
-        private void ShowForm()
-        {
-            WindowState = FormWindowState.Normal;
-            ShowInTaskbar = true;
+            Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();//TODO ENCAPSULATE THIS^
+            _restPic.Load(randomRestaurant.Picture);
+            _restName.Text = randomRestaurant.Name;
+            _restPrice.Text = randomRestaurant.Price;
+            _restRatePbox.BackgroundImage = randomRestaurant.Rating;
         }
 
         #endregion

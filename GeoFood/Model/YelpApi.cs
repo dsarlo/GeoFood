@@ -27,51 +27,7 @@ namespace GeoFood.Model
             _restaurantList = new List<BusinessResponse>();
         }
 
-        /// <summary>
-        /// Generate a list of 50 restaurants based on the user food preferences and coordinates (latitude and longitude). 
-        /// Does this for each of the preferences and stores them in a dictionary in order to speed up user interaction with the UI.
-        /// </summary>
-        /// <returns>NONE</returns>
-        public async Task<bool> PreloadRestaurantSearches(double latitude, double longitude, object[] preferences)
-        {
-            PreloadedRestaurantSearches = new Dictionary<int, IList<Restaurant>>();
-
-            SearchRequest request = new SearchRequest
-            {
-                Latitude = latitude,
-                Longitude = longitude,
-                MaxResults = 50,
-                OpenNow = true
-            };
-
-            for(int currentPref = 0; currentPref < preferences.Length; currentPref++)
-            {
-                request.Term = preferences[currentPref].ToString();
-
-                SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
-
-                IList<Restaurant> businessesForCurrentPreference = new List<Restaurant>();
-
-                foreach (BusinessResponse business in results.Businesses)
-                {
-                    string imageUrl = business.ImageUrl;
-                    string restaurantPic = string.IsNullOrEmpty(business.ImageUrl) ? SadFaceUrl : imageUrl;
-
-                    string restaurantPrice = business.Price;
-                    string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
-
-                    businessesForCurrentPreference.Add(new Restaurant(restaurantPic, business.Name, business.Rating, price));
-                }
-                PreloadedRestaurantSearches.Add(currentPref, businessesForCurrentPreference);
-            }
-
-            Properties.Settings.Default.PreloadedBusinesses = JsonConvert.SerializeObject(PreloadedRestaurantSearches);
-            Properties.Settings.Default.Save();
-
-            return true;
-        }
-
-        public async void ChangePreferredRestaurantType(double latitude, double longitude, string preference)
+        public async Task<bool> ChangePreferredRestaurantType(double latitude, double longitude, string preference)
         {
             SearchRequest request = new SearchRequest
             {
@@ -86,6 +42,8 @@ namespace GeoFood.Model
             SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
 
             _restaurantList = results.Businesses;
+
+            return true;
         }
 
         /// <summary>
@@ -98,6 +56,7 @@ namespace GeoFood.Model
             {
                 return new Restaurant(SadFaceUrl, "", -1f, "");
             }
+
             Random random = new Random();
             int index = random.Next(_restaurantList.Count);
 
