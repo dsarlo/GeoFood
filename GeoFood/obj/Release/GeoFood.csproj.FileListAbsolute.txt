@@ -10,3 +10,4 @@ C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Release\GeoFood.cspro
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Release\GeoFood.csproj.CoreCompileInputs.cache
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Release\GeoFood.exe
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Release\GeoFood.pdb
+C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\obj\Release\GeoFood.csprojResolveAssemblyReference.cache

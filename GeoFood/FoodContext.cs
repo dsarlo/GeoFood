@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Device.Location;
+using System.Drawing;
 using GeoFood.Model;
 using Newtonsoft.Json;
 using Yelp.Api.Models;
@@ -39,7 +40,7 @@ namespace GeoFood
             _longitude = currentLocation.Longitude;
             _geoWatcher.Stop();
 
-            ShouldWePreload();//TODO Rename?
+            ShouldWePreload();
 
             //Unhook the positionchanged event so preload is only called once
             _geoWatcher.PositionChanged -= PositionChanged;
@@ -48,10 +49,10 @@ namespace GeoFood
 
         private void ShouldWePreload()
         {
-            string currentLocationAsString = _latitude + ";" + _longitude;//TODO Encapsulate?
+            string currentLocationAsString = _latitude + ";" + _longitude;
 
-            if (string.IsNullOrEmpty(Properties.Settings.Default.PreloadedBusinesses) || currentLocationAsString !=
-                Properties.Settings.Default.LastSavedLocation)
+            if (string.IsNullOrEmpty(Properties.Settings.Default.PreloadedBusinesses)
+                || currentLocationAsString != Properties.Settings.Default.LastSavedLocation)
             {
                 PreloadRestaurantSearches();
                 Properties.Settings.Default.LastSavedLocation = _latitude + ";" + _longitude;
@@ -60,8 +61,7 @@ namespace GeoFood
             else
             {
                 PreloadFinished = true;
-                Dictionary<int, IList<BusinessResponse>> preloadedDictionary = JsonConvert.DeserializeObject<Dictionary<int, IList<BusinessResponse>>>(Properties.Settings.Default.PreloadedBusinesses);
-                _yelp.PreloadedRestaurantSearches = preloadedDictionary;
+                _yelp.PreloadedRestaurantSearches = JsonConvert.DeserializeObject<Dictionary<int, IList<Restaurant>>>(Properties.Settings.Default.PreloadedBusinesses);
             }
         }
 
@@ -95,6 +95,50 @@ namespace GeoFood
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             handler?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
+        public Bitmap RatingLookup(float rating)
+        {
+            Bitmap ratingAsImage = null;
+
+            switch (rating)
+            {
+                case -1:
+                    ratingAsImage = Properties.Resources.FFFFFF_0;
+                    break;
+                case 0:
+                    ratingAsImage = Properties.Resources._0;
+                    break;
+                case 1:
+                    ratingAsImage = Properties.Resources._1;
+                    break;
+                case 1.5f:
+                    ratingAsImage = Properties.Resources._1_5;
+                    break;
+                case 2:
+                    ratingAsImage = Properties.Resources._2;
+                    break;
+                case 2.5f:
+                    ratingAsImage = Properties.Resources._2_5;
+                    break;
+                case 3:
+                    ratingAsImage = Properties.Resources._3;
+                    break;
+                case 3.5f:
+                    ratingAsImage = Properties.Resources._3_5;
+                    break;
+                case 4:
+                    ratingAsImage = Properties.Resources._4;
+                    break;
+                case 4.5f:
+                    ratingAsImage = Properties.Resources._4_5;
+                    break;
+                case 5:
+                    ratingAsImage = Properties.Resources._5;
+                    break;
+            }
+
+            return ratingAsImage ?? Properties.Resources._0;
         }
     }
 }

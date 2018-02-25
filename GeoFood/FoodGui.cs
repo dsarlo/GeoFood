@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
 using GeoFood.Model;
 
@@ -8,8 +7,6 @@ namespace GeoFood
     public partial class FoodGui : Form
     {
         private readonly FoodContext _foodContext;
-
-        private const string PreferenceNotChosenText = "You must select a preference before activating the randomizer!";
 
         public FoodGui()
         {
@@ -39,10 +36,7 @@ namespace GeoFood
 
         private void OnPreloadFinished(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == FoodContext.PropertyNamePreloadFinished)
-            {
-                ShowForm();
-            }
+            ShowForm();
         }
 
         private void _submitButton_Click(object sender, System.EventArgs e)
@@ -50,14 +44,10 @@ namespace GeoFood
             if (_foodPrefDrop.SelectedIndex > -1)
             {
                 Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();
-                _restPic.Load(randomRestaurant.Picture);//TODO Optimize this. Perhaps convert it to a bitmap on preload?
+                _restPic.Load(randomRestaurant.Picture);
                 _restName.Text = randomRestaurant.Name;
                 _restPrice.Text = randomRestaurant.Price;
-                _restRatePbox.BackgroundImage = randomRestaurant.Rating;
-            }
-            else
-            {
-                MessageBox.Show(PreferenceNotChosenText);//TODO make this messagebox look nicer!
+                _restRatePbox.BackgroundImage = _foodContext.RatingLookup(randomRestaurant.Rating);
             }
         }
 

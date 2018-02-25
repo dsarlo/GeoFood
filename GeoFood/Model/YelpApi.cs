@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Yelp.Api;
@@ -9,10 +13,10 @@ namespace GeoFood.Model
 {
     internal class YelpApi
     {
-        private IList<BusinessResponse> _restaurantList;
+        private IList<Restaurant> _restaurantList;
         private readonly Client _yelpClient;
 
-        public Dictionary<int, IList<BusinessResponse>> PreloadedRestaurantSearches { get; internal set; }
+        public Dictionary<int, IList<Restaurant>> PreloadedRestaurantSearches { get; internal set; }
 
         private const string SadFaceUrl =
             "https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1480481055";
@@ -20,7 +24,7 @@ namespace GeoFood.Model
         public YelpApi()
         {
             _yelpClient = new Client("3MShj1xjzQBXVbXGSuc_qw", "2Y6bOEKXIHvRF9pQ42dt6YLSS66kEChB5NrTmkzLJMpM8TLxwohjitpBjNUhDZrb");
-            _restaurantList = new List<BusinessResponse>();
+            _restaurantList = new List<Restaurant>();
         }
 
         /// <summary>
@@ -30,7 +34,7 @@ namespace GeoFood.Model
         /// <returns>NONE</returns>
         public async Task<bool> PreloadRestaurantSearches(double latitude, double longitude, object[] preferences)
         {
-            PreloadedRestaurantSearches = new Dictionary<int, IList<BusinessResponse>>();
+            PreloadedRestaurantSearches = new Dictionary<int, IList<Restaurant>>();
 
             SearchRequest request = new SearchRequest
             {
@@ -45,11 +49,23 @@ namespace GeoFood.Model
                 request.Term = preferences[currentPref].ToString();
 
                 SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
-                PreloadedRestaurantSearches.Add(currentPref, results.Businesses);
+
+                IList<Restaurant> businessesForCurrentPreference = new List<Restaurant>();
+
+                foreach (BusinessResponse business in results.Businesses)
+                {
+                    string imageUrl = business.ImageUrl;
+                    string restaurantPic = string.IsNullOrEmpty(business.ImageUrl) ? SadFaceUrl : imageUrl;
+
+                    string restaurantPrice = business.Price;
+                    string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
+
+                    businessesForCurrentPreference.Add(new Restaurant(restaurantPic, business.Name, business.Rating, price));
+                }
+                PreloadedRestaurantSearches.Add(currentPref, businessesForCurrentPreference);
             }
 
-            string dictionaryAsString = JsonConvert.SerializeObject(PreloadedRestaurantSearches);
-            Properties.Settings.Default.PreloadedBusinesses = dictionaryAsString;
+            Properties.Settings.Default.PreloadedBusinesses = JsonConvert.SerializeObject(PreloadedRestaurantSearches);
             Properties.Settings.Default.Save();
 
             return true;
@@ -66,25 +82,12 @@ namespace GeoFood.Model
         /// <returns>A random restaurant</returns>
         public Restaurant RandomRestaurant()
         {
-            if (_restaurantList.Count == 0)
-            {
-                //System.Windows.Forms.MessageBox.Show(@"You've gone through all of the restaurants!");
-                return new Restaurant(SadFaceUrl, "", -1f, "");
-            }
-
             Random random = new Random();
-            int index = random.Next(_restaurantList.Count);
-
-            string photoUrl = _restaurantList[index].ImageUrl;
-            string photo = string.IsNullOrEmpty(photoUrl) ? SadFaceUrl : photoUrl;
-            string name = _restaurantList[index].Name;
-            float rating = _restaurantList[index].Rating;
-            string restaurantPrice = _restaurantList[index].Price;
-            string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;
+            int chosenRestaurant = random.Next(_restaurantList.Count);
 
             //TODO maybe dictionary that contains already visited food options (boolean array) and an index indicating the restaurant list (from the preload dictionary), but for now, it will be random and continue forever.
 
-            return new Restaurant(photo, name, rating, price);
+            return _restaurantList[chosenRestaurant];
         }
 
     }
