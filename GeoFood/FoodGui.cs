@@ -11,6 +11,8 @@ namespace GeoFood
         public FoodGui()
         {
             InitializeComponent();
+            _genPanel.Visible = false;
+            _loadPanel.Visible = false;
 
             _foodContext = new FoodContext();
 
@@ -55,6 +57,12 @@ namespace GeoFood
             }
         }
 
+        private void _backBtn_Click(object sender, System.EventArgs e)
+        {
+            _genPanel.Visible = false;
+            _prefPanel.Visible = true;
+        }
+
         private void _foodPrefDrop_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             _foodContext.ChangeUserPreference(_foodPrefDrop.SelectedIndex);
@@ -70,6 +78,7 @@ namespace GeoFood
                 _restPrice.Text = randomRestaurant.Price;
                 _restRatePbox.BackgroundImage = randomRestaurant.Rating;
                 _prefPanel.Visible = false;
+                _genPanel.Visible = true;
             }
         }
 
