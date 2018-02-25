@@ -20,16 +20,3 @@ C:\Users\Christian Coffey\Dropbox\geofood\GeoFood\obj\Debug\GeoFood.csproj.Gener
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\bin\Debug\Yelp.Api.dll
 C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\bin\Debug\GeoFood.exe.config
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\bin\Debug\GeoFood.exe
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\bin\Debug\GeoFood.pdb
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\bin\Debug\Yelp.Api.dll
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.csprojResolveAssemblyReference.cache
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.FoodGui.resources
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.Properties.Resources.resources
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.csproj.GenerateResource.Cache
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.csproj.CoreCompileInputs.cache
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.exe
-C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.pdb
