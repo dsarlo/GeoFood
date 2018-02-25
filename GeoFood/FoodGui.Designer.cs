@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodGui));
             this._submitButton = new System.Windows.Forms.Button();
             this._genPanel = new System.Windows.Forms.Panel();
+
             this._restaurantPanel = new System.Windows.Forms.Panel();
             this._restRatePbox = new System.Windows.Forms.PictureBox();
             this._restPic = new System.Windows.Forms.PictureBox();
@@ -42,6 +43,7 @@
             this._prefLabel = new System.Windows.Forms.Label();
             this._foodPrefDrop = new System.Windows.Forms.ComboBox();
             this._genPanel.SuspendLayout();
+
             this._restaurantPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._restPic)).BeginInit();
@@ -69,7 +71,7 @@
             this._genPanel.Controls.Add(this._submitButton);
             this._genPanel.Location = new System.Drawing.Point(12, 13);
             this._genPanel.Name = "_genPanel";
-            this._genPanel.Size = new System.Drawing.Size(0, 0);
+            this._genPanel.Size = new System.Drawing.Size(389, 277);
             this._genPanel.TabIndex = 0;
             // 
             // _restaurantPanel
@@ -84,6 +86,26 @@
             this._restaurantPanel.Name = "_restaurantPanel";
             this._restaurantPanel.Size = new System.Drawing.Size(353, 100);
             this._restaurantPanel.TabIndex = 6;
+            // 
+            // _restRatePbox
+            // 
+            this._restRatePbox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this._restRatePbox.Location = new System.Drawing.Point(21, 43);
+            this._restRatePbox.Name = "_restRatePbox";
+            this._restRatePbox.Size = new System.Drawing.Size(92, 17);
+            this._restRatePbox.TabIndex = 9;
+            this._restRatePbox.TabStop = false;
+            // 
+            // _restPic
+            // 
+            this._restPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this._restPic.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this._restPic.InitialImage = null;
+            this._restPic.Location = new System.Drawing.Point(248, 3);
+            this._restPic.Name = "_restPic";
+            this._restPic.Size = new System.Drawing.Size(100, 92);
+            this._restPic.TabIndex = 8;
+            this._restPic.TabStop = false;
             // 
             // _restRatePbox
             // 
@@ -137,7 +159,7 @@
             this._prefPanel.Controls.Add(this._prefNext);
             this._prefPanel.Controls.Add(this._prefLabel);
             this._prefPanel.Controls.Add(this._foodPrefDrop);
-            this._prefPanel.Location = new System.Drawing.Point(12, 13);
+            this._prefPanel.Location = new System.Drawing.Point(12, 12);
             this._prefPanel.Name = "_prefPanel";
             this._prefPanel.Size = new System.Drawing.Size(389, 278);
             this._prefPanel.TabIndex = 1;
@@ -183,13 +205,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 307);
+            this.ClientSize = new System.Drawing.Size(413, 302);
             this.Controls.Add(this._loadPanel);
             this.Controls.Add(this._prefPanel);
             this.Controls.Add(this._genPanel);
             this.Name = "FoodGui";
             this.Text = "GeoFood";
             this._genPanel.ResumeLayout(false);
+
             this._restaurantPanel.ResumeLayout(false);
             this._restaurantPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).EndInit();
