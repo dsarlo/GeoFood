@@ -28,29 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodGui));
             this._submitButton = new System.Windows.Forms.Button();
-            this._genPanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this._restPrice = new System.Windows.Forms.Label();
-            this._restName = new System.Windows.Forms.Label();
-            this._loadPanel = new System.Windows.Forms.Panel();
-            this._prefPanel = new System.Windows.Forms.Panel();
-            this._prefNext = new System.Windows.Forms.Button();
             this._prefLabel = new System.Windows.Forms.Label();
             this._foodPrefDrop = new System.Windows.Forms.ComboBox();
+            this._bgPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this._restRatePbox = new System.Windows.Forms.PictureBox();
             this._restPic = new System.Windows.Forms.PictureBox();
-            this._genPanel.SuspendLayout();
+            this._restPrice = new System.Windows.Forms.Label();
+            this._restName = new System.Windows.Forms.Label();
+            this._bgPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            this._prefPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._restPic)).BeginInit();
             this.SuspendLayout();
             // 
             // _submitButton
             // 
-            this._submitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._submitButton.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._submitButton.Location = new System.Drawing.Point(117, 83);
             this._submitButton.Name = "_submitButton";
             this._submitButton.Size = new System.Drawing.Size(154, 51);
@@ -59,18 +54,40 @@
             this._submitButton.UseVisualStyleBackColor = true;
             this._submitButton.Click += new System.EventHandler(this._submitButton_Click);
             // 
-            // _genPanel
+            // _prefLabel
             // 
-            this._genPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._prefLabel.AutoSize = true;
+            this._prefLabel.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._prefLabel.Location = new System.Drawing.Point(100, 15);
+            this._prefLabel.Name = "_prefLabel";
+            this._prefLabel.Size = new System.Drawing.Size(189, 19);
+            this._prefLabel.TabIndex = 1;
+            this._prefLabel.Text = "General Food Preference";
+            // 
+            // _foodPrefDrop
+            // 
+            this._foodPrefDrop.Font = new System.Drawing.Font("HelvLight", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._foodPrefDrop.FormattingEnabled = true;
+            this._foodPrefDrop.Location = new System.Drawing.Point(134, 38);
+            this._foodPrefDrop.Name = "_foodPrefDrop";
+            this._foodPrefDrop.Size = new System.Drawing.Size(121, 24);
+            this._foodPrefDrop.TabIndex = 2;
+            this._foodPrefDrop.SelectedIndexChanged += new System.EventHandler(this._foodPrefDrop_SelectedIndexChanged);
+            // 
+            // _bgPanel
+            // 
+            this._bgPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this._genPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this._genPanel.Controls.Add(this.panel2);
-            this._genPanel.Controls.Add(this._submitButton);
-            this._genPanel.Location = new System.Drawing.Point(12, 13);
-            this._genPanel.Name = "_genPanel";
-            this._genPanel.Size = new System.Drawing.Size(0, 0);
-            this._genPanel.TabIndex = 0;
+            this._bgPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this._bgPanel.Controls.Add(this.panel2);
+            this._bgPanel.Controls.Add(this._foodPrefDrop);
+            this._bgPanel.Controls.Add(this._prefLabel);
+            this._bgPanel.Controls.Add(this._submitButton);
+            this._bgPanel.Location = new System.Drawing.Point(12, 13);
+            this._bgPanel.Name = "_bgPanel";
+            this._bgPanel.Size = new System.Drawing.Size(390, 275);
+            this._bgPanel.TabIndex = 0;
             // 
             // panel2
             // 
@@ -84,80 +101,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(353, 100);
             this.panel2.TabIndex = 6;
-            // 
-            // _restPrice
-            // 
-            this._restPrice.AutoSize = true;
-            this._restPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._restPrice.Location = new System.Drawing.Point(17, 63);
-            this._restPrice.Name = "_restPrice";
-            this._restPrice.Size = new System.Drawing.Size(0, 20);
-            this._restPrice.TabIndex = 7;
-            // 
-            // _restName
-            // 
-            this._restName.AutoSize = true;
-            this._restName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._restName.Location = new System.Drawing.Point(17, 19);
-            this._restName.Name = "_restName";
-            this._restName.Size = new System.Drawing.Size(0, 20);
-            this._restName.TabIndex = 5;
-            // 
-            // _loadPanel
-            // 
-            this._loadPanel.Location = new System.Drawing.Point(12, 311);
-            this._loadPanel.Name = "_loadPanel";
-            this._loadPanel.Size = new System.Drawing.Size(389, 278);
-            this._loadPanel.TabIndex = 2;
-            // 
-            // _prefPanel
-            // 
-            this._prefPanel.BackColor = System.Drawing.Color.White;
-            this._prefPanel.BackgroundImage = global::GeoFood.Properties.Resources.prefbg2;
-            this._prefPanel.Controls.Add(this._prefNext);
-            this._prefPanel.Controls.Add(this._prefLabel);
-            this._prefPanel.Controls.Add(this._foodPrefDrop);
-            this._prefPanel.Location = new System.Drawing.Point(12, 13);
-            this._prefPanel.Name = "_prefPanel";
-            this._prefPanel.Size = new System.Drawing.Size(389, 278);
-            this._prefPanel.TabIndex = 1;
-            // 
-            // _prefNext
-            // 
-            this._prefNext.BackColor = System.Drawing.Color.Transparent;
-            this._prefNext.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_prefNext.BackgroundImage")));
-            this._prefNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this._prefNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this._prefNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._prefNext.ForeColor = System.Drawing.Color.Transparent;
-            this._prefNext.Location = new System.Drawing.Point(254, 219);
-            this._prefNext.Name = "_prefNext";
-            this._prefNext.Size = new System.Drawing.Size(121, 51);
-            this._prefNext.TabIndex = 7;
-            this._prefNext.UseVisualStyleBackColor = false;
-            this._prefNext.Click += new System.EventHandler(this._prefNext_Click);
-            // 
-            // _prefLabel
-            // 
-            this._prefLabel.AutoSize = true;
-            this._prefLabel.BackColor = System.Drawing.Color.Transparent;
-            this._prefLabel.Font = new System.Drawing.Font("8bitoperator", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._prefLabel.Location = new System.Drawing.Point(36, 95);
-            this._prefLabel.Name = "_prefLabel";
-            this._prefLabel.Size = new System.Drawing.Size(312, 25);
-            this._prefLabel.TabIndex = 1;
-            this._prefLabel.Text = "What are you hungry for?";
-            // 
-            // _foodPrefDrop
-            // 
-            this._foodPrefDrop.Font = new System.Drawing.Font("8bitoperator", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._foodPrefDrop.ForeColor = System.Drawing.Color.Black;
-            this._foodPrefDrop.FormattingEnabled = true;
-            this._foodPrefDrop.Location = new System.Drawing.Point(115, 144);
-            this._foodPrefDrop.Name = "_foodPrefDrop";
-            this._foodPrefDrop.Size = new System.Drawing.Size(158, 33);
-            this._foodPrefDrop.TabIndex = 2;
-            this._foodPrefDrop.SelectedIndexChanged += new System.EventHandler(this._foodPrefDrop_SelectedIndexChanged);
             // 
             // _restRatePbox
             // 
@@ -179,21 +122,36 @@
             this._restPic.TabIndex = 8;
             this._restPic.TabStop = false;
             // 
+            // _restPrice
+            // 
+            this._restPrice.AutoSize = true;
+            this._restPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._restPrice.Location = new System.Drawing.Point(17, 63);
+            this._restPrice.Name = "_restPrice";
+            this._restPrice.Size = new System.Drawing.Size(0, 20);
+            this._restPrice.TabIndex = 7;
+            // 
+            // _restName
+            // 
+            this._restName.AutoSize = true;
+            this._restName.Font = new System.Drawing.Font("HelvLight", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._restName.Location = new System.Drawing.Point(17, 19);
+            this._restName.Name = "_restName";
+            this._restName.Size = new System.Drawing.Size(0, 19);
+            this._restName.TabIndex = 5;
+            // 
             // FoodGui
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 307);
-            this.Controls.Add(this._loadPanel);
-            this.Controls.Add(this._prefPanel);
-            this.Controls.Add(this._genPanel);
+            this.ClientSize = new System.Drawing.Size(414, 302);
+            this.Controls.Add(this._bgPanel);
             this.Name = "FoodGui";
             this.Text = "GeoFood";
-            this._genPanel.ResumeLayout(false);
+            this._bgPanel.ResumeLayout(false);
+            this._bgPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this._prefPanel.ResumeLayout(false);
-            this._prefPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._restRatePbox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._restPic)).EndInit();
             this.ResumeLayout(false);
@@ -205,15 +163,12 @@
         private System.Windows.Forms.Button _submitButton;
         private System.Windows.Forms.Label _prefLabel;
         private System.Windows.Forms.ComboBox _foodPrefDrop;
-        private System.Windows.Forms.Panel _genPanel;
+        private System.Windows.Forms.Panel _bgPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label _restName;
         private System.Windows.Forms.Label _restPrice;
         private System.Windows.Forms.PictureBox _restPic;
         private System.Windows.Forms.PictureBox _restRatePbox;
-        private System.Windows.Forms.Panel _prefPanel;
-        private System.Windows.Forms.Button _prefNext;
-        private System.Windows.Forms.Panel _loadPanel;
     }
 }
 
