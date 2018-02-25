@@ -34,6 +34,7 @@ namespace GeoFood
 
         #region Events
 
+        // TODO add progress bar that hides after this returns true
         private void OnPreloadFinished(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == FoodContext.PropertyNamePreloadFinished)
@@ -81,5 +82,10 @@ namespace GeoFood
         }
 
         #endregion
+
+        private void _prefNext_Click(object sender, System.EventArgs e)
+        {
+            _prefPanel.Visible = false;
+        }
     }
 }
