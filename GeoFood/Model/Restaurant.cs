@@ -4,12 +4,15 @@ namespace GeoFood.Model
 {
     internal class Restaurant
     {
-        public Restaurant(string picture, string name, float rating, string price)
+        public Restaurant(string picture, string name, float rating, string price,
+                            float distance, string website)
         {
             Picture = picture;
             Name = name;
             Rating = RatingLookup(rating);
             Price = price;
+            Distance = distance;
+            Website = Website;
         }
 
         public string Picture { get; }
@@ -19,6 +22,10 @@ namespace GeoFood.Model
         public Bitmap Rating { get; }
 
         public string Price { get; }
+
+        public float Distance { get; }
+
+        public string Website { get; }
 
         public Bitmap RatingLookup(float rating)
         {

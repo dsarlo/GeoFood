@@ -38,9 +38,8 @@ namespace GeoFood.Model
                 Term = preference
             };
 
-
             SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
-
+            Console.WriteLine("LOAD COMPLETE");
             _restaurantList = results.Businesses;
 
             return true;
@@ -65,11 +64,12 @@ namespace GeoFood.Model
 
             string imageUrl = chosenBusiness.ImageUrl;
             string restaurantPic = string.IsNullOrEmpty(chosenBusiness.ImageUrl) ? SadFaceUrl : imageUrl;
-
             string restaurantPrice = chosenBusiness.Price;
             string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
+            float distance = chosenBusiness.Distance;
+            string website = chosenBusiness.Url;
 
-            return new Restaurant(restaurantPic, chosenBusiness.Name, chosenBusiness.Rating, price);
+            return new Restaurant(restaurantPic, chosenBusiness.Name, chosenBusiness.Rating, price, distance, website);
         }
 
     }
