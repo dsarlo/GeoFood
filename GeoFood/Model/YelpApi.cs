@@ -35,11 +35,11 @@ namespace GeoFood.Model
                 Longitude = longitude,
                 MaxResults = 50,
                 OpenNow = true,
-                Term = preference
+                Term = preference,
+                Radius = 25000
             };
-
+            
             SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
-            Console.WriteLine("LOAD COMPLETE");
             _restaurantList = results.Businesses;
 
             return true;
@@ -53,7 +53,7 @@ namespace GeoFood.Model
         {
             if (_restaurantList.Count == 0)
             {
-                return new Restaurant(SadFaceUrl, "", -1f, "");
+                return new Restaurant(SadFaceUrl, "", -1f, "", 0, null);
             }
 
             Random random = new Random();
@@ -66,7 +66,7 @@ namespace GeoFood.Model
             string restaurantPic = string.IsNullOrEmpty(chosenBusiness.ImageUrl) ? SadFaceUrl : imageUrl;
             string restaurantPrice = chosenBusiness.Price;
             string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
-            float distance = chosenBusiness.Distance;
+            float distance = (float)Math.Round((chosenBusiness.Distance * 0.001f), 1); 
             string website = chosenBusiness.Url;
 
             return new Restaurant(restaurantPic, chosenBusiness.Name, chosenBusiness.Rating, price, distance, website);

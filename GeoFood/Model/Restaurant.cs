@@ -1,18 +1,18 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace GeoFood.Model
 {
     internal class Restaurant
     {
-        public Restaurant(string picture, string name, float rating, string price,
-                            float distance, string website)
+        public Restaurant(string picture, string name, float rating, string price, float distance, string website)
         {
             Picture = picture;
             Name = name;
             Rating = RatingLookup(rating);
             Price = price;
             Distance = distance;
-            Website = Website;
+            Website = website;
         }
 
         public string Picture { get; }

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Forms;
 using GeoFood.Model;
 
@@ -7,7 +9,7 @@ namespace GeoFood
     public partial class FoodGui : Form
     {
         private readonly FoodContext _foodContext;
-
+        private string _restaurantWebsite;
         public FoodGui()
         {
             InitializeComponent();
@@ -78,13 +80,26 @@ namespace GeoFood
 
         private void DisplayNextRestaurant()
         {
+            
+
             Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();//TODO ENCAPSULATE THIS^
+            
+            _restaurantWebsite = randomRestaurant.Website;
             _restPic.Load(randomRestaurant.Picture);
+            _restName.Enabled = _restaurantWebsite != null;
             _restName.Text = randomRestaurant.Name;
             _restPrice.Text = randomRestaurant.Price;
             _restRatePbox.BackgroundImage = randomRestaurant.Rating;
+            _restDistance.Text = randomRestaurant.Distance == 1.0 ? 
+                randomRestaurant.Distance.ToString() + " mile" : 
+                randomRestaurant.Distance.ToString() + " miles";
         }
 
         #endregion
+
+        private void _restName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(_restaurantWebsite);
+        }
     }
 }
