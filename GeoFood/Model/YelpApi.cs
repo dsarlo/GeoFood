@@ -23,7 +23,7 @@ namespace GeoFood.Model
 
         public YelpApi()
         {
-            _yelpClient = new Client("3MShj1xjzQBXVbXGSuc_qw", "2Y6bOEKXIHvRF9pQ42dt6YLSS66kEChB5NrTmkzLJMpM8TLxwohjitpBjNUhDZrb");
+            _yelpClient = new Client("3MShj1xjzQBXVbXGSuc_qw", "9JvzR_sWVuhipG77MtIMpAGwvjaxUUw1ZEPf9EaTRqfhVg_r0-83nZZk_ArpryLeObEcb6yRpVwHZBHS-cwQZgEo3SBN6FvAljQUlig2GXNS_kNLVOqDNN5if76YWnYx");
             _restaurantList = new List<BusinessResponse>();
         }
 
