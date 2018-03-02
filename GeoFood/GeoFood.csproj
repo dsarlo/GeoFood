@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Device" />
@@ -50,7 +47,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="Yelp.Api, Version=1.2.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Desktop\Yelp.Api-master\Source\Yelp.Api\bin\Debug\Yelp.Api.dll</HintPath>
+      <HintPath>..\..\Yelp.Api\Source\Yelp.Api\bin\Release\Yelp.Api.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Device.Location;
-using System.Drawing;
 using GeoFood.Model;
-using Newtonsoft.Json;
-using Yelp.Api.Models;
 
 namespace GeoFood
 {

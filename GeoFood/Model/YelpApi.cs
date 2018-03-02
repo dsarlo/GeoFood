@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using Yelp.Api;
 using Yelp.Api.Models;
 
@@ -16,14 +11,14 @@ namespace GeoFood.Model
         private IList<BusinessResponse> _restaurantList;
         private readonly Client _yelpClient;
 
-        public Dictionary<int, IList<Restaurant>> PreloadedRestaurantSearches { get; internal set; }
-
         private const string SadFaceUrl =
             "https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1480481055";
 
+        private const string ApiKey = "9JvzR_sWVuhipG77MtIMpAGwvjaxUUw1ZEPf9EaTRqfhVg_r0-83nZZk_ArpryLeObEcb6yRpVwHZBHS-cwQZgEo3SBN6FvAljQUlig2GXNS_kNLVOqDNN5if76YWnYx";
+
         public YelpApi()
         {
-            _yelpClient = new Client("3MShj1xjzQBXVbXGSuc_qw", "9JvzR_sWVuhipG77MtIMpAGwvjaxUUw1ZEPf9EaTRqfhVg_r0-83nZZk_ArpryLeObEcb6yRpVwHZBHS-cwQZgEo3SBN6FvAljQUlig2GXNS_kNLVOqDNN5if76YWnYx");
+            _yelpClient = new Client(ApiKey);
             _restaurantList = new List<BusinessResponse>();
         }
 
@@ -38,8 +33,7 @@ namespace GeoFood.Model
                 Term = preference,
                 Radius = 25000
             };
-            Console.WriteLine(latitude.ToString());
-            Console.WriteLine(longitude.ToString());
+
             SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
             _restaurantList = results.Businesses;
 
@@ -52,10 +46,10 @@ namespace GeoFood.Model
         /// <returns>A random restaurant</returns>
         public Restaurant RandomRestaurant()
         {
-            if (_restaurantList.Count == 0)
+            /*if (_restaurantList.Count == 0)
             {
                 return new Restaurant(SadFaceUrl, "", -1f, "", 0, null);
-            }
+            }*/
 
             Random random = new Random();
             int index = random.Next(_restaurantList.Count);
@@ -67,7 +61,7 @@ namespace GeoFood.Model
             string restaurantPic = string.IsNullOrEmpty(chosenBusiness.ImageUrl) ? SadFaceUrl : imageUrl;
             string restaurantPrice = chosenBusiness.Price;
             string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
-            float distance = (float)Math.Round((chosenBusiness.Distance * 0.001609344f), 1); 
+            float distance = (float) Math.Round(chosenBusiness.Distance * 0.001609344f, 1); 
             string website = chosenBusiness.Url;
 
             return new Restaurant(restaurantPic, chosenBusiness.Name, chosenBusiness.Rating, price, distance, website);

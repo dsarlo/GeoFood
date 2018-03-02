@@ -34,3 +34,4 @@ C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.csp
 C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.exe
 C:\Users\Christian Coffey\Dropbox\projects\GeoFood\GeoFood\obj\Debug\GeoFood.pdb
 C:\Users\Christian Coffey\Dropbox\projects\geofood\GeoFood\bin\Debug\Yelp.Api.pdb
+C:\Users\Daniel Sarlo\Documents\GitHub\geofood\GeoFood\bin\Debug\Yelp.Api.pdb

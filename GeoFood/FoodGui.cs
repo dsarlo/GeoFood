@@ -1,6 +1,4 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 using GeoFood.Model;
 
@@ -69,6 +67,11 @@ namespace GeoFood
             _foodContext.OnUserPreferenceChanged(_foodPrefDrop.SelectedIndex);
         }
 
+        private void _restName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(_restaurantWebsite);
+        }
+
         #endregion
 
         #region HelperFunctions
@@ -96,10 +99,5 @@ namespace GeoFood
         }
 
         #endregion
-
-        private void _restName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            System.Diagnostics.Process.Start(_restaurantWebsite);
-        }
     }
 }
