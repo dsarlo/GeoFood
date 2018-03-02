@@ -1,0 +1,5 @@
+- Figure out a means to await authentication prior to searching for businesses.
+
+- More accurate geolocation?
+
+- Change the ratio to something closer to the user (better to do this after we deduce a method for more accurate geopositioning)
