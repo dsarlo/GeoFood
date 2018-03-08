@@ -24,7 +24,6 @@ namespace GeoFood
 
         private void GetCurrentLocation()
         {
-            CivicAddress address = new CivicAddress();
             _geoWatcher = new GeoCoordinateWatcher(GeoPositionAccuracy.Default);
             _geoWatcher.PositionChanged += PositionChanged;
             _geoWatcher.Start();

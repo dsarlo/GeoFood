@@ -34,8 +34,16 @@ namespace GeoFood.Model
                 Radius = 25000
             };
 
-            SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);//TODO timeout exception check
-            _restaurantList = results.Businesses;
+            try
+            {
+                SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);
+                _restaurantList = results.Businesses;
+            }
+            catch (TimeoutException e)
+            {
+                Console.WriteLine(e);
+                throw;//TODO figure out what to do
+            }
 
             return true;
         }

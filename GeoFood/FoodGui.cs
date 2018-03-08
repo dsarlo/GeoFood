@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using GeoFood.Model;
 
@@ -83,9 +84,7 @@ namespace GeoFood
 
         private void DisplayNextRestaurant()
         {
-            
-
-            Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();//TODO ENCAPSULATE THIS^
+            Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();
             
             _restaurantWebsite = randomRestaurant.Website;
             _restPic.Load(randomRestaurant.Picture);
@@ -93,9 +92,9 @@ namespace GeoFood
             _restName.Text = randomRestaurant.Name;
             _restPrice.Text = randomRestaurant.Price;
             _restRatePbox.BackgroundImage = randomRestaurant.Rating;
-            _restDistance.Text = randomRestaurant.Distance == 1.0 ? 
-                randomRestaurant.Distance.ToString() + " mile" : 
-                randomRestaurant.Distance.ToString() + " miles";
+            _restDistance.Text = Math.Abs(randomRestaurant.Distance - 1.0) < 0.00001 ? 
+                randomRestaurant.Distance + " mile" : 
+                randomRestaurant.Distance + " miles";
         }
 
         #endregion
