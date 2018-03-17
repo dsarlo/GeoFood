@@ -8,7 +8,7 @@ namespace GeoFood.Model
 {
     internal class YelpApi
     {
-        private IList<BusinessResponse> _restaurantList;
+        private readonly IList<Restaurant> _restaurantList;
         private readonly Client _yelpClient;
 
         private const string SadFaceUrl =
@@ -19,7 +19,7 @@ namespace GeoFood.Model
         public YelpApi()
         {
             _yelpClient = new Client(ApiKey);
-            _restaurantList = new List<BusinessResponse>();
+            _restaurantList = new List<Restaurant>();
         }
 
         public async Task<bool> ChangePreferredRestaurantType(double latitude, double longitude, string preference)
@@ -34,15 +34,17 @@ namespace GeoFood.Model
                 Radius = 25000
             };
 
-            try
+            SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);
+            foreach(BusinessResponse business in results.Businesses)
             {
-                SearchResponse results = await _yelpClient.SearchBusinessesAllAsync(request);
-                _restaurantList = results.Businesses;
-            }
-            catch (TimeoutException e)
-            {
-                Console.WriteLine(e);
-                throw;//TODO figure out what to do
+                string imageUrl = business.ImageUrl;
+                string restaurantPic = string.IsNullOrEmpty(business.ImageUrl) ? SadFaceUrl : imageUrl;
+                string restaurantPrice = business.Price;
+                string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
+                float distance = (float)Math.Round(business.Distance * 0.001609344f, 1);
+                string website = business.Url;
+
+                _restaurantList.Add(new Restaurant(restaurantPic, business.Name, business.Rating, price, distance, website));
             }
 
             return true;
@@ -54,25 +56,10 @@ namespace GeoFood.Model
         /// <returns>A random restaurant</returns>
         public Restaurant RandomRestaurant()
         {
-            /*if (_restaurantList.Count == 0)
-            {
-                return new Restaurant(SadFaceUrl, "", -1f, "", 0, null);
-            }*/
-
             Random random = new Random();
-            int index = random.Next(_restaurantList.Count);
+            int index = random.Next(_restaurantList.Count);//TODO handle same restaurant twice+
 
-            //TODO maybe dictionary that contains already visited food options (boolean array) and an index indicating the restaurant list (from the preload dictionary), but for now, it will be random and continue forever.
-            BusinessResponse chosenBusiness = _restaurantList[index];
-
-            string imageUrl = chosenBusiness.ImageUrl;
-            string restaurantPic = string.IsNullOrEmpty(chosenBusiness.ImageUrl) ? SadFaceUrl : imageUrl;
-            string restaurantPrice = chosenBusiness.Price;
-            string price = string.IsNullOrEmpty(restaurantPrice) ? "$" : restaurantPrice;//TODO make restaurant class handle nullorempty case?
-            float distance = (float) Math.Round(chosenBusiness.Distance * 0.001609344f, 1); 
-            string website = chosenBusiness.Url;
-
-            return new Restaurant(restaurantPic, chosenBusiness.Name, chosenBusiness.Rating, price, distance, website);
+            return _restaurantList[index];
         }
 
     }
