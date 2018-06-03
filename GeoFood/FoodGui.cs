@@ -9,6 +9,7 @@ namespace GeoFood
     {
         private readonly FoodContext _foodContext;
         private string _restaurantWebsite;
+
         public FoodGui()
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace GeoFood
 
         #region Events
 
-        // TODO add progress bar that hides after this returns true
         private void FoodContextOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == FoodContext.PropertyNameLoadFinished)
@@ -84,7 +84,7 @@ namespace GeoFood
 
         private void DisplayNextRestaurant()
         {
-            Restaurant randomRestaurant = _foodContext.GetRandomRestaurant();
+            Restaurant randomRestaurant = _foodContext.GetNextRestaurant();
             
             _restaurantWebsite = randomRestaurant.Website;
             _restPic.Load(randomRestaurant.Picture);
@@ -92,9 +92,7 @@ namespace GeoFood
             _restName.Text = randomRestaurant.Name;
             _restPrice.Text = randomRestaurant.Price;
             _restRatePbox.BackgroundImage = randomRestaurant.Rating;
-            _restDistance.Text = Math.Abs(randomRestaurant.Distance - 1.0) < 0.00001 ? 
-                randomRestaurant.Distance + " mile" : 
-                randomRestaurant.Distance + " miles";
+            _restDistance.Text = Math.Abs(randomRestaurant.Distance - 1.0) < 0.00001 ? randomRestaurant.Distance + " mile" : randomRestaurant.Distance + " miles";
         }
 
         #endregion

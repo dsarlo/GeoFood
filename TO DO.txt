@@ -1,3 +1,7 @@
 - More accurate geolocation?
 
 - Change the ratio to something closer to the user (better to do this after we deduce a method for more accurate geopositioning).
+
+- Deal with text wrapping of the restaurant name
+
+- Figure out what we should do when we get back 0 results from yelp

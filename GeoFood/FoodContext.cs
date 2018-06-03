@@ -41,10 +41,10 @@ namespace GeoFood
             _geoWatcher.Dispose();
         }
 
-        //#GOODTOKNOW can only be called if a preference has been chosen otherwise current restaurant will be null
-        public Restaurant GetRandomRestaurant()
+        //#GOODTOKNOW can only be called if a preference has been chosen otherwise restaurant list will be null
+        public Restaurant GetNextRestaurant()
         {
-            return _yelp.RandomRestaurant();
+            return _yelp.GetNextRestaurant();
         }
 
         public async void OnUserPreferenceChanged(int preference)
